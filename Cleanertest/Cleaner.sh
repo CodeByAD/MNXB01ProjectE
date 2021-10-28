@@ -20,10 +20,9 @@ done
 #if you only want one specific year: Change year underneath do desired year.
 #if you do not want this feature, comment it out.
 
-year=1988
+#year=1988
 
-sed -i "/$year/!d" Cleaneddata
-
+#sed -i "/$year/!d" Cleaneddata
 
 
 
