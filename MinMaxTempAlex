@@ -1,0 +1,59 @@
+#include <iostream>
+
+using namespace std;
+
+// ROOT library obejcts
+#include <TF1.h> // 1d function class
+#include <TH1.h> // 1d histogram classes
+#include <TStyle.h>  // style object
+#include <TMath.h>   // math functions
+#include <TCanvas.h> // canvas object
+#include <fstream> // input/output file stream class
+
+void minmaxhist(){ //function producing histograms for the hottest and coldest days each year
+
+//Some variables
+Int_t lines = 5000;
+string date; // takes the read string yyyy-mm-dd
+string dates[lines]; //An array for storing dates, as multiple measurements are done each day the size is greater than 365. Size can be increased by changing variable lines.
+Double_t temp; //Stores the temp for a date and puts it into temps1d.
+Double_t temps[lines]; //Stores all temperatures for later comparison.
+Double_t hottemps[365];
+Double_t coldtemps[365];
+Int_t linenr = -1; //Keeps track of which line in the data-file is being investigated. 
+
+// open input file
+ifstream file("Cleaneddata");
+
+
+cout << "Creating histograms for the hottest and coldest days each year." << endl;
+// create a histogram hPhi
+TH1D* HChist = new TH1D("HChist", "Hottest temperatures; Day of year; Temperature [celcius]", 365, 0, 365); //We are not dealing with leap year now.
+
+while(file >> date >> temp){//handles one line of the data-file at a time
+	linenr += 1;	
+	//cout << date << endl;
+	dates[linenr] = date;
+	temps[linenr] = temp;
+}
+cout << "linenr " << linenr << endl;
+//Now filling the rest of dates and temps with a string and value respectively marking the end of data from the data-file.
+for(Int_t k = linenr+1; k<lines; k++){
+	dates[k] = "end"; //These strings will be sorted away
+	temps[k] = -300; //These (impossible) temperatures will be sorted away
+}
+
+for(Int_t i = lines-10; i<lines+10; i++){
+cout << "  Date " << dates[i] << " temp " << temps[i];
+}
+
+}
+
+/*
+int hotcold(){//Takes a list of temperatures from a year and returns a list with the hottest temperatures for each day and the coldest temperatures for each day respectively.
+//Also returns which of these are the hottest or coldest.
+
+}
+*/
+
+
