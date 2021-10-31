@@ -10,3 +10,5 @@ Difference between north and south across year.(Diff between two datasets, one n
 10/28 - Added choice of year to cleaner.sh - Crippe
 
 10/31 - Added a new branch "MinMaxTempAlex" with my MinMaxTemp.C code able to read and sort data for 3.3 - Alex
+
+10/31 - Added a feature to select specific times from the dataset in the cleaner - Crippe

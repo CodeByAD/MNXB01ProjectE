@@ -1,14 +1,17 @@
 #!/bin/bash
-sed -e '1,12d' DATA > Cleaneddata
-sed -i 's/;/ /g' Cleaneddata 
-sed -i 's/Y.*//' Cleaneddata
-sed -i 's/G.*//' Cleaneddata
-sed -i 's/:/ /g' Cleaneddata 
-sed -i 's/  */ /g' Cleaneddata
-sed -i 's/^ //' Cleaneddata
+sed -e '1,12d' DATA > Cleaneddata #Writes all but the first 12 lines to a new file
+sed -i 's/;/ /g' Cleaneddata #Swaps all semi-colon for spaces
+sed -i 's/Y.*//' Cleaneddata #Removes all Y
+sed -i 's/G.*//' Cleaneddata #Removes all G
 
-#removes the times in the data, if this is not wanted.
-#Comment out the while loop
+sed -i '/12:00\|13:00/!d' Cleaneddata #Special line where one can take out only specific wanted times.
+
+sed -i 's/:/ /g' Cleaneddata #Swaps all colons for spaces
+sed -i 's/  */ /g' Cleaneddata #Reduces all multiple spaces to only one
+sed -i 's/^ //' Cleaneddata #removes the first carachter if its a space
+
+#removes the times in the data
+#if this is not wanted, Comment out the while loop
 i=20
 x=12
 while [ $i -ge $x ]
