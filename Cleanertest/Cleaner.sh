@@ -8,7 +8,7 @@ sed -i '/12:00\|13:00/!d' Cleaneddata #Special line where one can take out only 
 
 sed -i 's/:/ /g' Cleaneddata #Swaps all colons for spaces
 sed -i 's/  */ /g' Cleaneddata #Reduces all multiple spaces to only one
-sed -i 's/^ //' Cleaneddata #removes the first carachter if its a space
+sed -i 's/^ //' Cleaneddata #removes the first character if its a space
 
 #removes the times in the data
 #if this is not wanted, Comment out the while loop
@@ -27,6 +27,12 @@ done
 
 #sed -i "/$year/!d" Cleaneddata
 
+#Cleanes the dashes separating the dates
+sed -i 's/./ /5' Cleaneddata
+sed -i 's/./ /8' Cleaneddata
+sed -i 's/./ /9' Cleaneddata
+sed -i 's/./ /10' Cleaneddata
+sed -i 's/  */ /g' Cleaneddata #Reduces all multiple spaces to only one
 
 
 
