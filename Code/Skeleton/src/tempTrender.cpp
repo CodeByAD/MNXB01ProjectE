@@ -172,7 +172,7 @@ double findtemp(Double_t daytemps[], Int_t samedaycount, string desire){
 
 
 //function producing histograms for the hottest and coldest days each year
-void tempTrender::extremetemps(){ 
+void tempTrender::extremetemps(string year){ 
 
 //Some variables
 Int_t lines = 500000; //#lines in the data file
@@ -184,7 +184,7 @@ Double_t daytemps[lines]; //Stores the temperatures of one day at a time, made a
 Double_t hottemps[400][366]; //year, day
 Double_t coldtemps[400][366]; //year, day
 Int_t linenr = -1; //Keeps track of which line in the data-file is being investigated. Begins at -1 due to loop-structures.
-string year = "2020"; //The year to investigate, this can be changed. A string variable to be easily comparable to the data
+//The year to investigate, this can be changed. A string variable to be easily comparable to the data
 Int_t yearindex; //To find the desired year in the 2D arrays to be produced.
 Int_t daynr; //To have to #days for the desired year stored.
 
@@ -336,3 +336,7 @@ ACold_hist->SetFillColor(4);
 ACold_hist->Draw("SAME HIST");
 
 }
+
+
+
+
