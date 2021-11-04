@@ -28,7 +28,6 @@ void tempTrender::tempOnDay(int monthToCalculate, int dayToCalculate) const { //
 	int tot_lines = 50300;
 	int line = -1;
 	int year;
-	int years[tot_lines];
 	int month;
 	int months[tot_lines];
 	int day;
@@ -39,7 +38,6 @@ void tempTrender::tempOnDay(int monthToCalculate, int dayToCalculate) const { //
 	//reading in data file
 	while(file >> year >> month >> day >> temp){
 		line++;	
-		//years[line] = year ;
 		months[line] = month;
 		days[line] = day;
 		temps[line] = temp;
@@ -83,12 +81,11 @@ void tempTrender::tempOnDay(int dateToCalculate) const {  //Make a histogram of 
 
 		if (dateToCalculate > count){
 			count = count + DaysPerMonth[k];
-			cout << count << endl;
 		}
 			else {
 				in_month = k;
 				in_day = dateToCalculate - count + DaysPerMonth[k-1];
-				cout << in_month << " , " << in_day << endl; 
+				//cout << in_month << " , " << in_day << endl; 
 				break;
 			}
 	}
@@ -103,7 +100,6 @@ void tempTrender::tempOnDay(int dateToCalculate) const {  //Make a histogram of 
 	int tot_lines = 50300;
 	int line = -1;
 	int year;
-	int years[tot_lines];
 	int month;
 	int months[tot_lines];
 	int day;
@@ -114,7 +110,6 @@ void tempTrender::tempOnDay(int dateToCalculate) const {  //Make a histogram of 
 	//reading in data file
 	while(file >> year >> month >> day >> temp){
 		line++;	
-		//years[line] = year ;
 		months[line] = month;
 		days[line] = day;
 		temps[line] = temp;
