@@ -13,7 +13,7 @@ using namespace std;
 // ROOT library
 
 
-int main()
+void Avgtemp3D()
 {
 
 

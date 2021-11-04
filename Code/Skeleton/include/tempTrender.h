@@ -15,7 +15,7 @@ class tempTrender {
 	
 	 void extremetemps(string year);//Make a histograms for the hottest and coldest days of each year, as well 
 					//as the hottest and coldest temperature for every day of one year (the argument)
-	
+	 void Avgtemp3D();
 	private:
 	
 };

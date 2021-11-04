@@ -1,5 +1,5 @@
 #!/bin/bash
-sed -e '1,12d' DATA > Cleaneddata #Writes all but the first 12 lines to a new file
+sed -e '1,12d' smhi-opendata_1_93250_20210926_100622_Karlstad.csv > Cleaneddata #Writes all but the first 12 lines to a new file
 sed -i 's/;/ /g' Cleaneddata #Swaps all semi-colon for spaces
 sed -i 's/Y.*//' Cleaneddata #Removes all Y
 sed -i 's/G.*//' Cleaneddata #Removes all G
