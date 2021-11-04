@@ -1,6 +1,16 @@
 #include <iostream>
 #include "tempTrender.h"
 
+using namespace std;
+
+// ROOT library objects
+#include <TF1.h> // 1d function class
+#include <TH1.h> // 1d histogram classes
+#include <TStyle.h>  // style object
+#include <TMath.h>   // math functions
+#include <TCanvas.h> // canvas object
+#include <fstream> // input/output file stream class
+
 tempTrender::tempTrender(const std::string& filePath) {
 	std::cout << "The user supplied " << filePath <<" as the path to the data file.\n";
 	std::cout << "You should probably store this information in a member variable of the class! Good luck with the project! :)\n";
@@ -142,17 +152,6 @@ void tempTrender::tempOnDay(int dateToCalculate) const {  //Make a histogram of 
 
 
 void tempTrender::extremetemps(){
-#include <iostream>
-
-using namespace std;
-
-// ROOT library obejcts
-#include <TF1.h> // 1d function class
-#include <TH1.h> // 1d histogram classes
-#include <TStyle.h>  // style object
-#include <TMath.h>   // math functions
-#include <TCanvas.h> // canvas object
-#include <fstream> // input/output file stream class
 
 double findtemp(Double_t daytemps[], Int_t samedaycount, string desire){
 	Double_t hottest = -300;
