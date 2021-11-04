@@ -19,37 +19,37 @@ tempTrender::tempTrender(const std::string& filePath) {
 void tempTrender::tempOnDay(int monthToCalculate, int dayToCalculate) const { //Make a histogram of the temperature on this day
 
 	// open input file
-	ifstream file ("Cleaneddata_3.1");
+	ifstream file ("Cleaneddata");
 
 	// create a histogram 
  	TH1D* dayhist = new TH1D("dayhist", "Average temperature of 1 day; Temperature [celsius]; counts", 60, -20, 40);
 
 	//variable declaration 
-	int tot_lines = 50300; //defines size of arrays
-	int line = -1; //counts lines while reading data
-	int year;  // stores year when reading
-	int month; // stores month when reading
-	int months[tot_lines]; //collects month values
-	int day; // stores day while reading
-	int days[tot_lines]; //collects day values
-	double temp; // stores temperature while reading
-	double temps[tot_lines]; //collects temperature values
+	int tot_lines = 50300;
+	int line = -1;
+	int year;
+	int month;
+	int months[tot_lines];
+	int day;
+	int days[tot_lines];
+	double temp;
+	double temps[tot_lines];
 
 	//reading in data file
 	while(file >> year >> month >> day >> temp){
 		line++;	
-		months[line] = month; //storing month, day and temperature values in seperate arrays
+		months[line] = month;
 		days[line] = day;
 		temps[line] = temp;
  		}
-	tot_lines = line; // update total amount of lines to actual values
+	tot_lines = line;
 
 	//filling histogram
 	for (Int_t i = 0; i < tot_lines; i++){
 
-		if	(monthToCalculate == months[i]){  //checking for correct month
-			if (dayToCalculate == days[i]){  //checking for correct day
-				dayhist->Fill(temps[i]); //Filling histogram
+		if	(monthToCalculate == months[i]){
+			if (dayToCalculate == days[i]){
+				dayhist->Fill(temps[i]);
 			}
 		}
 	
@@ -64,7 +64,7 @@ void tempTrender::tempOnDay(int monthToCalculate, int dayToCalculate) const { //
 	dayhist->SetFillColor(kRed +1);
 
   	// create canvas for dayhist
-  	TCanvas* c1 = new TCanvas("c1", "The temperature of a given day (month,day)", 900, 600);
+  	TCanvas* c1 = new TCanvas("c1", "day canvas", 900, 600);
   	dayhist->Draw();
 
 } 
@@ -72,71 +72,71 @@ void tempTrender::tempOnDay(int monthToCalculate, int dayToCalculate) const { //
 void tempTrender::tempOnDay(int dateToCalculate) const {  //Make a histogram of the temperature on this date
 
 	//find date
-	int DaysPerMonth[12] = {31,28,31,30,31,30,31,31,30,31,30,31}; //array with number of days per month
-	int count = 0;  // variable for some of daynumbers for several months
-	int in_month = 0; //variables to store date corresponding to requested day
-	int in_day = 0;
+	Int_t DaysPerMonth[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
+	Int_t count = 0;
+	Int_t in_month = 0;
+	Int_t in_day = 0;
 
-	for (Int_t k = -1; k < 12; k++){ //loop to find date of day to calculate
+	for (Int_t k = -1; k < 12; k++){
 
-		if (dateToCalculate > count){ 
+		if (dateToCalculate > count){
 			count = count + DaysPerMonth[k];
 		}
 			else {
-				in_month = k; //storing value for month of requested day
-				in_day = dateToCalculate - count + DaysPerMonth[k-1]; //storing value for day of requested day
+				in_month = k;
+				in_day = dateToCalculate - count + DaysPerMonth[k-1];
 				//cout << in_month << " , " << in_day << endl; 
 				break;
 			}
 	}
 
 	// open input file
-	ifstream file ("Cleaneddata_3.1");
+	ifstream file ("Cleaneddata");
 
 	// create a histogram 
  	TH1D* dayhist2 = new TH1D("dayhist2", "Average temperature of 1 day; Temperature [celsius]; counts", 60, -20, 40);
 
-	int tot_lines = 50300; //defines size of arrays
-	int line = -1; //counts lines while reading data
-	int year;  // stores year when reading
-	int month; // stores month when reading
-	int months[tot_lines]; //collects month values
-	int day; // stores day while reading
-	int days[tot_lines]; //collects day values
-	double temp; // stores temperature while reading
-	double temps[tot_lines]; //collects temperature values
-
+	//variable declaration 
+	int tot_lines = 50300;
+	int line = -1;
+	int year;
+	int month;
+	int months[tot_lines];
+	int day;
+	int days[tot_lines];
+	double temp;
+	double temps[tot_lines];
 
 	//reading in data file
-	while(file >> year >> month >> day >> temp){ 
+	while(file >> year >> month >> day >> temp){
 		line++;	
-		months[line] = month; //storing month, day and temperature values in seperate arrays
+		months[line] = month;
 		days[line] = day;
 		temps[line] = temp;
  		}
-	tot_lines = line; // update total amount of lines to actual values
+	tot_lines = line;
 
 	//filling histogram
 	for (Int_t i = 0; i < tot_lines; i++){
 
-		if	(in_month == months[i]){  //checking for right month
-			if (in_day == days[i]){   // checking for right day
-				dayhist2->Fill(temps[i]);  //filling histogram
+		if	(in_month == months[i]){
+			if (in_day == days[i]){
+				dayhist2->Fill(temps[i]);
 			}
 		}
 	
 	}
 
 	//Mean value and standart deviation
-	double mean2 = dayhist2->GetMean();	
-	double stdev2 = dayhist2->GetRMS();
-	cout << "The mean temperature is " << mean2 << " and the standart deviation is " << stdev2 << "." << endl;
+	double mean = dayhist2->GetMean();	
+	double stdev = dayhist2->GetRMS();
+	cout << "The mean temperature is " << mean << " and the standart deviation is " << stdev << "." << endl;
 
 	//filling color for dayhist
 	dayhist2->SetFillColor(kRed +1);
 
   	// create canvas for dayhist
-  	TCanvas* c2 = new TCanvas("c2", "Average temperature of 1 day (1-355); Temperature [celsius]", 900, 600);
+  	TCanvas* c1 = new TCanvas("c1", "day canvas", 900, 600);
   	dayhist2->Draw();
 
 } 
@@ -145,3 +145,194 @@ void tempTrender::tempOnDay(int dateToCalculate) const {  //Make a histogram of 
 // void tempTrender::hotCold() const {} //Make a histogram of the hottest and coldest day of the year
 // void tempTrender::tempPerYear(int yearToExtrapolate) const {} //Make a histogram of average temperature per year, then fit and extrapolate to the given year
 
+
+
+double findtemp(Double_t daytemps[], Int_t samedaycount, string desire){
+	Double_t hottest = -300;
+	Double_t coldest = 1000000000000;	
+	for(Int_t l = 0; l<samedaycount; l++){
+	
+		if(daytemps[l]>hottest){
+			hottest = daytemps[l];			
+		}
+		if(daytemps[l]<coldest){
+			coldest = daytemps[l];		
+		}
+	
+	}
+
+	if(desire == "hot"){
+		return hottest;
+	}
+	if(desire == "cold"){
+		return coldest;
+	}
+
+}
+
+
+//function producing histograms for the hottest and coldest days each year
+void tempTrender::extremetemps(){ 
+
+//Some variables
+Int_t lines = 500000; //#lines in the data file
+string date; // takes the read string yyyy-mm-dd
+string dates[lines]; //An array for storing dates, as multiple measurements are done each day the size is greater than 365. Size can be increased by changing variable lines.
+Double_t temp; //Stores the temp for a date and puts it into temps1d.
+Double_t temps[lines]; //Stores all temperatures for later comparison.
+Double_t daytemps[lines]; //Stores the temperatures of one day at a time, made at least big enough given #lines in the data file.
+Double_t hottemps[400][366]; //year, day
+Double_t coldtemps[400][366]; //year, day
+Int_t linenr = -1; //Keeps track of which line in the data-file is being investigated. Begins at -1 due to loop-structures.
+string year = "2020"; //The year to investigate, this can be changed. A string variable to be easily comparable to the data
+Int_t yearindex; //To find the desired year in the 2D arrays to be produced.
+Int_t daynr; //To have to #days for the desired year stored.
+
+// open input file
+ifstream file("Cleaneddata");
+
+//handles one line of the data-file at a time
+while(file >> date >> temp){
+	linenr++;	
+	dates[linenr] = date;
+	temps[linenr] = temp;
+}
+
+//Now filling the rest of dates and temps with a string and value respectively marking the end of data from the data-file. (This is probably not necessary)
+for(Int_t k = linenr+1; k<lines; k++){
+	dates[k] = "end"; //These strings will be sorted away
+	temps[k] = -300; //These (impossible) temperatures will be sorted away
+}
+
+Int_t j = 0; 
+Int_t day = 0;
+string currentyear = "";
+Int_t yearcount = -1;
+//Finds the hottest and coldest temp of every day of every year
+while(j<=linenr){
+	Int_t samedaycount = 0;//the number of temperatures measurements during a day	
+	string currentday; //the day that is being investigated 
+	if(dates[j].substr(0, 4) == currentyear){//To find the correct year
+		currentday = dates[j].substr(5,5);
+		while(dates[j].substr(5,5) == currentday){//To only get temp. from one day
+			daytemps[samedaycount] = temps[j];
+			samedaycount++;
+			j++;
+			if(dates[j].substr(0, 4) != currentyear){
+				break;	//breaks out of the loop if the year changed			
+			}
+		}
+
+		hottemps[yearcount][day] = findtemp(daytemps, samedaycount, "hot");
+		coldtemps[yearcount][day] = findtemp(daytemps, samedaycount, "cold");
+		day++;
+
+	}
+
+	else{
+		if(currentyear == year){
+			yearindex = yearcount;		
+			daynr = day;
+		}
+		currentyear = dates[j].substr(0, 4);
+		yearcount++;
+		day=0;
+	}
+}
+
+
+//setting the styles for the histograms (code from suggested code for project)
+gStyle->SetOptStat(0); //Get rid of the stat box
+gStyle->SetOptTitle(0); //Get rid of the title 
+gStyle->SetTitleSize(0.05, "x");//Bigger text on the axes
+gStyle->SetTitleSize(0.05, "y");
+gStyle->SetLabelSize(0.05, "x");//Bigger labels too
+gStyle->SetLabelSize(0.05, "y");
+gStyle->SetPadTopMargin(0.05); //Change the margins to fit
+gStyle->SetPadRightMargin(0.05);
+gStyle->SetPadBottomMargin(0.16);
+gStyle->SetPadLeftMargin(0.16);
+gStyle->SetErrorX(0); //To not have error bars
+
+// create a histograms Hot_hist and Cold_hist
+TH1D* Hot_hist = new TH1D("Hottest temperatures", "Hottest temperatures; Day of year; Temperature [celcius]", day, 0, day); //Using day to make sure the histogram is big enoug, this deals with jump years (366 days).
+TH1D* Cold_hist = new TH1D("Coldest temperatures", "Coldest temperatures; Day of year; Temperature [celcius]", daynr, 0, daynr);
+TH1D* Both_hist = new TH1D("Both hottest and coldest temperatures", "Both hottest and coldest temperatures; Day of year; Temperature [celcius]", daynr, 0, daynr);
+TH1D* Mean_hist = new TH1D("Mean of hottest and coldest temperatures", "Mean of hottest and coldest temperatures; Day of year; Temperature [celcius]", daynr, 0, daynr);
+TH1D* FixFill_hist = new TH1D("FixFill", "FixFill; Day of year; Temperature [celcius]", daynr, 0, daynr);
+
+
+//Filling the histograms
+for(Int_t n = 0; n<daynr; n++){
+	Hot_hist->Fill(n,hottemps[yearindex][n]);
+	Cold_hist->Fill(n,coldtemps[yearindex][n]);
+	Mean_hist->Fill(n,(hottemps[yearindex][n]+coldtemps[yearindex][n])/2); //Not plotted, but could be interesting.
+	if(coldtemps[yearindex][n]>=0){
+		FixFill_hist->Fill(n,coldtemps[yearindex][n]);
+	}	
+
+	Both_hist->Fill(n,hottemps[yearindex][n]);//As coldtemps will be drawn on the same canvas
+					//as Both_hist it is fine to fill it with hottemps only.
+					//I use Both_hist instead of Hot_hist as the initial drawing
+					//to get the correct title.
+}
+
+//Creating canvases
+TCanvas* c_hot = new TCanvas("c_hot", "Hot_hist", 900, 600);
+Hot_hist->Draw("HIST");
+TCanvas* c_cold = new TCanvas("c_cold", "Cold_hist", 900, 600);
+Cold_hist->Draw("HIST");
+TCanvas* c_both = new TCanvas("c_both", "Both_hist", 900, 600);
+//The y-axis would only be fit to the first Drawn histogram and not the second,
+// therefore I am manually fitting them
+Both_hist->SetMinimum(*min_element(coldtemps[yearindex], coldtemps[yearindex]+daynr)-3);
+Both_hist->SetMaximum(*max_element(hottemps[yearindex], hottemps[yearindex]+daynr)+3);
+
+Both_hist->SetFillColor(9);
+Both_hist->Draw("HIST");
+
+TH1D* Cold_hist2 = new TH1D();
+*Cold_hist2 = *Cold_hist; //Making a deepcopy of Cold_hist so I can use SetFillColor
+// without changing the histogram Cold_hist.
+Cold_hist2->SetFillColor(9);
+Cold_hist2->Draw("SAME HIST");
+
+FixFill_hist->SetFillColor(10); //Using this to "paint over" the part between 0
+// and the positive values of Cold_hist2, which would otherwise have also been
+// "filled", not the most elegant solution, but it works.
+FixFill_hist->Draw("SAME HIST");
+
+
+//Now making a histogram with the coldest and the hottest temperatures of each year
+TH1D* AHot_hist = new TH1D("All Hottest temperatures", "All Hottest temperatures; Day of year; Red: Hottest, Blue: Coldest", 366, 0, 366);
+TH1D* ACold_hist = new TH1D("All Coldest temperatures", "All Coldest temperatures; Day of year; Temperature [celcius]", 366, 0, 366);
+
+//Filling these histograms
+Int_t Ahottest[366] = {0}; //no initializer is specified so all elements are zero
+Int_t Acoldest[366] = {0};
+for(Int_t i = 0; i<yearcount; i++){
+	for(Int_t n = 0; n<366; n++){
+		if(*min_element(coldtemps[i], coldtemps[i]+366) == coldtemps[i][n]){
+			Acoldest[n]++;
+		}
+		if(*max_element(hottemps[i], hottemps[i]+366) == hottemps[i][n]){
+			Ahottest[n]++;
+		}
+	}	
+}
+
+for(Int_t n = 0; n<366; n++){
+//	cout << "Day " << n << " instances coldest: " << Acoldest[n] << endl;
+//There seems to be too high values for the coldest temperatures days 0, 1 and 4, but
+// the histogram looks ok.
+	AHot_hist->Fill(n,Ahottest[n]);
+	ACold_hist->Fill(n,Acoldest[n]);
+}
+
+TCanvas* c_Ahot = new TCanvas("c_Ahot", "All_years_hottest_and_coldest_day_hist", 900, 600);
+AHot_hist->SetFillColor(2);
+AHot_hist->Draw("HIST");
+ACold_hist->SetFillColor(4);
+ACold_hist->Draw("SAME HIST");
+
+}
