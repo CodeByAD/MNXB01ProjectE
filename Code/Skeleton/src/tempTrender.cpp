@@ -19,7 +19,7 @@ tempTrender::tempTrender(const std::string& filePath) {
 void tempTrender::tempOnDay(int monthToCalculate, int dayToCalculate) const { //Make a histogram of the temperature on this day
 
 	// open input file
-	ifstream file ("Cleaneddata");
+	ifstream file ("Cleaneddata_3.1");
 
 	// create a histogram 
  	TH1D* dayhist = new TH1D("dayhist", "Average temperature of 1 day; Temperature [celsius]; counts", 60, -20, 40);
@@ -89,7 +89,7 @@ void tempTrender::tempOnDay(int dateToCalculate) const {  //Make a histogram of 
 	}
 
 	// open input file
-	ifstream file ("Cleaneddata");
+	ifstream file ("Cleaneddata_3.1");
 
 	// create a histogram 
  	TH1D* dayhist2 = new TH1D("dayhist2", "Average temperature of 1 day; Temperature [celsius]; counts", 60, -20, 40);
