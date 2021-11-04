@@ -19,37 +19,37 @@ tempTrender::tempTrender(const std::string& filePath) {
 void tempTrender::tempOnDay(int monthToCalculate, int dayToCalculate) const { //Make a histogram of the temperature on this day
 
 	// open input file
-	ifstream file ("Cleaneddata");
+	ifstream file ("Cleaneddata_3.1");
 
 	// create a histogram 
  	TH1D* dayhist = new TH1D("dayhist", "Average temperature of 1 day; Temperature [celsius]; counts", 60, -20, 40);
 
 	//variable declaration 
-	int tot_lines = 50300;
-	int line = -1;
-	int year;
-	int month;
-	int months[tot_lines];
-	int day;
-	int days[tot_lines];
-	double temp;
-	double temps[tot_lines];
+	int tot_lines = 50300; //defines size of arrays
+	int line = -1; //counts lines while reading data
+	int year;  // stores year when reading
+	int month; // stores month when reading
+	int months[tot_lines]; //collects month values
+	int day; // stores day while reading
+	int days[tot_lines]; //collects day values
+	double temp; // stores temperature while reading
+	double temps[tot_lines]; //collects temperature values
 
 	//reading in data file
 	while(file >> year >> month >> day >> temp){
 		line++;	
-		months[line] = month;
+		months[line] = month; //storing month, day and temperature values in seperate arrays
 		days[line] = day;
 		temps[line] = temp;
  		}
-	tot_lines = line;
+	tot_lines = line; // update total amount of lines to actual values
 
 	//filling histogram
 	for (Int_t i = 0; i < tot_lines; i++){
 
-		if	(monthToCalculate == months[i]){
-			if (dayToCalculate == days[i]){
-				dayhist->Fill(temps[i]);
+		if	(monthToCalculate == months[i]){  //checking for correct month
+			if (dayToCalculate == days[i]){  //checking for correct day
+				dayhist->Fill(temps[i]); //Filling histogram
 			}
 		}
 	
@@ -64,7 +64,7 @@ void tempTrender::tempOnDay(int monthToCalculate, int dayToCalculate) const { //
 	dayhist->SetFillColor(kRed +1);
 
   	// create canvas for dayhist
-  	TCanvas* c1 = new TCanvas("c1", "day canvas", 900, 600);
+  	TCanvas* c1 = new TCanvas("c1", "The temperature of a given day (month,day)", 900, 600);
   	dayhist->Draw();
 
 } 
@@ -72,71 +72,69 @@ void tempTrender::tempOnDay(int monthToCalculate, int dayToCalculate) const { //
 void tempTrender::tempOnDay(int dateToCalculate) const {  //Make a histogram of the temperature on this date
 
 	//find date
-	Int_t DaysPerMonth[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
-	Int_t count = 0;
-	Int_t in_month = 0;
-	Int_t in_day = 0;
+	int DaysPerMonth[12] = {31,28,31,30,31,30,31,31,30,31,30,31}; //array with number of days per month
+	int count = 0;  // variable for some of daynumbers for several months
 
-	for (Int_t k = -1; k < 12; k++){
+	for (Int_t k = -1; k < 12; k++){ //loop to find date of day to calculate
 
-		if (dateToCalculate > count){
+		if (dateToCalculate > count){ 
 			count = count + DaysPerMonth[k];
 		}
 			else {
-				in_month = k;
-				in_day = dateToCalculate - count + DaysPerMonth[k-1];
+				int in_month = k; //storing value for month of requested day
+				int in_day = dateToCalculate - count + DaysPerMonth[k-1]; //storing value for day of requested day
 				//cout << in_month << " , " << in_day << endl; 
 				break;
 			}
 	}
 
 	// open input file
-	ifstream file ("Cleaneddata");
+	ifstream file ("Cleaneddata_3.1");
 
 	// create a histogram 
  	TH1D* dayhist2 = new TH1D("dayhist2", "Average temperature of 1 day; Temperature [celsius]; counts", 60, -20, 40);
 
-	//variable declaration 
-	int tot_lines = 50300;
-	int line = -1;
-	int year;
-	int month;
-	int months[tot_lines];
-	int day;
-	int days[tot_lines];
-	double temp;
-	double temps[tot_lines];
+	int tot_lines = 50300; //defines size of arrays
+	int line = -1; //counts lines while reading data
+	int year;  // stores year when reading
+	int month; // stores month when reading
+	int months[tot_lines]; //collects month values
+	int day; // stores day while reading
+	int days[tot_lines]; //collects day values
+	double temp; // stores temperature while reading
+	double temps[tot_lines]; //collects temperature values
+
 
 	//reading in data file
-	while(file >> year >> month >> day >> temp){
+	while(file >> year >> month >> day >> temp){ 
 		line++;	
-		months[line] = month;
+		months[line] = month; //storing month, day and temperature values in seperate arrays
 		days[line] = day;
 		temps[line] = temp;
  		}
-	tot_lines = line;
+	tot_lines = line; // update total amount of lines to actual values
 
 	//filling histogram
 	for (Int_t i = 0; i < tot_lines; i++){
 
-		if	(in_month == months[i]){
-			if (in_day == days[i]){
-				dayhist2->Fill(temps[i]);
+		if	(in_month == months[i]){  //checking for right month
+			if (in_day == days[i]){   // checking for right day
+				dayhist2->Fill(temps[i]);  //filling histogram
 			}
 		}
 	
 	}
 
 	//Mean value and standart deviation
-	double mean = dayhist2->GetMean();	
-	double stdev = dayhist2->GetRMS();
-	cout << "The mean temperature is " << mean << " and the standart deviation is " << stdev << "." << endl;
+	double mean2 = dayhist2->GetMean();	
+	double stdev2 = dayhist2->GetRMS();
+	cout << "The mean temperature is " << mean2 << " and the standart deviation is " << stdev2 << "." << endl;
 
 	//filling color for dayhist
 	dayhist2->SetFillColor(kRed +1);
 
   	// create canvas for dayhist
-  	TCanvas* c1 = new TCanvas("c1", "day canvas", 900, 600);
+  	TCanvas* c2 = new TCanvas("c2", "Average temperature of 1 day; Temperature [celsius]", 900, 600);
   	dayhist2->Draw();
 
 } 
