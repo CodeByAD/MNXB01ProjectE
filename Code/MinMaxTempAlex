@@ -204,4 +204,3 @@ ACold_hist->Draw("SAME HIST");
 General notes:
 I chose Karlstad since it had relatively big differences between coldtemps and hottemps for each day.
 */
-
