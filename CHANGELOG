@@ -14,3 +14,6 @@ Difference between north and south across year.(Diff between two datasets, one n
 10/31 - Added a feature to select specific times from the dataset in the cleaner - Crippe
 
 11/01 - Added functionality to sort individual days and their hottest and coldest temperatures in MinMaxTempAlex - Alex
+
+11/04 - Added functionality to create lists of temperatures and days for single years and all years respectively in MinMaxTempAlex - Alex
+        Added functionality to plot temperatures and days in single histograms and also using two plots in the same histograms in MinMaxTempAlex - Alex
