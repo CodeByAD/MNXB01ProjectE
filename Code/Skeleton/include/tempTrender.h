@@ -13,8 +13,8 @@ class tempTrender {
 	// void hotCold() const; //Make a histogram of the hottest and coldest day of the year
 	// void tempPerYear(int yearToExtrapolate) const; //Make a histogram of average temperature per year, then fit and extrapolate to the given year
 	
-	void extremetemps();//Make a histograms for the hottest and coldest days of each year, as well 
-						//as every hottest and coldest temperature for one year
+	 void extremetemps(string year);//Make a histograms for the hottest and coldest days of each year, as well 
+					//as the hottest and coldest temperature for every day of one year (the argument)
 	
 	private:
 	
