@@ -18,7 +18,7 @@ void tempOnDay(Int_t monthToCalculate, Int_t dayToCalculate){
 
 	// open input file
 	fstream file;
-	file.open("Cleaneddata", ios::in);
+	file.open("Cleaneddata_3.1", ios::in);
 
 	// create a histogram 
  	TH1D* dayhist = new TH1D("dayhist", "Average temperature of 1 day; Temperature [celsius]; counts", 60, -20, 40);

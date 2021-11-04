@@ -54,7 +54,7 @@ void tempOnDay(Int_t dateToCalculate){
 
 	// open input file
 	fstream file;
-	file.open("Cleaneddata", ios::in);
+	file.open("Cleaneddata_3.1", ios::in);
 
 	//reading in data file
 	while(file >> year >> month >> day >> temp){
