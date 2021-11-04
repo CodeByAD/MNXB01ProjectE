@@ -7,7 +7,7 @@ Rootlogon.C:
 Change the include path to your include directory in the skeleton file ex: -I/home/name/folder/to/include
 
 Producing Results generally:
-In git there exists both the basic root macros for each result and a code skeleton with all the functions iside. Either run the macros from root or run the skeleton via the rootlogon file.
+In git there exists both the basic root macros for each result and a code skeleton with all the functions iside. Either run the macros from root or run the skeleton via the rootlogon file. To use the rootlogon you must change the include folder path and make sure that a cleaneddata file is availible. 
 
 To produce result 3.1:
 Run root int the folder where the skeleton exists with the temponday functions not commented out in project.cpp.
