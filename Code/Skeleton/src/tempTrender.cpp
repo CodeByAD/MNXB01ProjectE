@@ -74,6 +74,8 @@ void tempTrender::tempOnDay(int dateToCalculate) const {  //Make a histogram of 
 	//find date
 	int DaysPerMonth[12] = {31,28,31,30,31,30,31,31,30,31,30,31}; //array with number of days per month
 	int count = 0;  // variable for some of daynumbers for several months
+	int in_month = 0; //variables to store date corresponding to requested day
+	int in_day = 0;
 
 	for (Int_t k = -1; k < 12; k++){ //loop to find date of day to calculate
 
@@ -81,8 +83,8 @@ void tempTrender::tempOnDay(int dateToCalculate) const {  //Make a histogram of 
 			count = count + DaysPerMonth[k];
 		}
 			else {
-				int in_month = k; //storing value for month of requested day
-				int in_day = dateToCalculate - count + DaysPerMonth[k-1]; //storing value for day of requested day
+				in_month = k; //storing value for month of requested day
+				in_day = dateToCalculate - count + DaysPerMonth[k-1]; //storing value for day of requested day
 				//cout << in_month << " , " << in_day << endl; 
 				break;
 			}
@@ -134,7 +136,7 @@ void tempTrender::tempOnDay(int dateToCalculate) const {  //Make a histogram of 
 	dayhist2->SetFillColor(kRed +1);
 
   	// create canvas for dayhist
-  	TCanvas* c2 = new TCanvas("c2", "Average temperature of 1 day; Temperature [celsius]", 900, 600);
+  	TCanvas* c2 = new TCanvas("c2", "Average temperature of 1 day (1-355); Temperature [celsius]", 900, 600);
   	dayhist2->Draw();
 
 } 
