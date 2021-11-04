@@ -10,4 +10,7 @@ void project() {
 	//t.tempPerDay();
 	//t.hotCold();
 	//t.tempPerYear(2050);
+	
+	t.extremetemps("2020"); //Call with a single year to investigate
+				//Also plots for all available years in the dataset
 }
