@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{xunicode}
+\usepackage{tabularx} 
+\usepackage{systeme}
+\usepackage{amsfonts}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{mathtools}
+
+\title{3.3 The warmest and coldest day of each year}
+\author{Alexander Degener}
+\date{November 2021}
+
+\begin{document}
+
+\maketitle
+
+
+\section{Goals}
+This part of the project is about finding the hottest and coldest days of each year. The temperature data from a specific region in Sweden shall be read by a program, sorted according to date and then processed to find out when minimum and maximum temperature instances occur.\\
+The information produced by processing the data should also produce histograms enabling predictions on when future hottest and coldest days might occur. A histograms showing instances of hottest and coldest days at the same time should also be produced.\\
+Additionally, the program should be able to find the hottest and coldest temperatures every day of any year. These temperatures should then be plotted in histograms individually as well as in the same histogram, in that way illustrating the maximum temperature difference each day of any year.
+
+\\
+\section{Results}
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=\textwidth, height = 7 cm]{AllYearsHotCold.png}
+    \caption{The Hottest and Coldest day every year for Karlstad from 1942-06-01 to 2021-06-01.}
+    \label{fig:my_label}
+\end{figure}\\
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=\textwidth, height = 7 cm]{OneYearHotNextToCold.png}
+    \caption{The Hottest and Coldest temperature instance every day for Karlstad from the single year 2020.}
+    \label{fig:my_label}
+\end{figure}\\
+
+\begin{figure} [H]
+    \centering
+    \includegraphics[width=\textwidth, height = 7 cm]{OneYearBothHotColdHIst.png}
+    \caption{The Hottest and Coldest temperature instance every day for Karlstad for from the single year 2020 in the same histogram.}
+    \label{fig:my_label}
+\end{figure}\\
+
+\\
+\section{Approach}
+The cleaned data-file for Karlstad was read by a program one line at a time. One part of each line was saved in a list of dates and one in a list of temperatures for each year.\\
+When one year had been looped through the temperatures of each day were compared and stored in lists for minimi temperature and maxima temperature.\\
+Appropriate lists were made for single years and all years respectively, containing temperatures or days of hottest or coldest temperatures.\\
+The values of the lists were then plotted as individual histograms and also using two plots in the same histograms.
+
+
+\section{Prediction}
+Based on the histogram in figure 1, the coldest day during the year should be very likely to occur around the first week of January, and the hottest day around the middle of July.
+
+\end{document}
