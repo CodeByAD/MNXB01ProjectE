@@ -20,7 +20,12 @@ Run root in the folder where the skeleton exists with the temponday functions no
 Type project()
 
 To produce result 3.3:
-Run root int the folder where the skeleton exists with the extremetemps() function not commented out in project.cpp.
+Cleaner settings: 
+Comment out command to take out specific times, Line 7.
+Include time removal while loop as the last command
+This means that everything below which includes picking out a single year and #Cleanes the dashes separating the dates should not be included.
+Move Cleneddata into skeleton directory or provide its path in the code for result 3.3, function named extremetemps.
+Run root in the folder where the skeleton exists with the extremetemps() function not commented out in project.cpp.
 Type project()
 
 To produce 3d graph result:
