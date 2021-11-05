@@ -10,7 +10,7 @@ Change the include path to your include directory in the skeleton file ex: -I/ho
 Producing Results generally:
 In git there exists both the basic root macros for each result and a code skeleton with all the functions iside. Either run the macros from root or run the skeleton via the rootlogon file. To use the rootlogon you must change the include folder path and make sure that a cleaneddata file is availible. 
 
-To produce result 3.1:
+To produce result 3.1:\n
 Cleaner settings:
 Make sure to take out both 12:00 and 13:00 in the same sed command:Line 7 sed -i '/12:00\|13:00/!d'
 Do not include picking out a specific year
