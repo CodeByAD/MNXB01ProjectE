@@ -23,7 +23,7 @@ tempTrender::tempTrender(const std::string& filePath) {
 void tempTrender::tempOnDay(int monthToCalculate, int dayToCalculate) const { //Make a histogram of the temperature on this day
 
 	// open input file
-	ifstream file ("Cleaneddata");
+	ifstream file ("Cleaneddata_3.1");
 
 	// create a histogram 
  	TH1D* dayhist = new TH1D("dayhist", "Average temperature of 1 day; Temperature [celsius]; counts", 60, -20, 40);
@@ -95,7 +95,7 @@ void tempTrender::tempOnDay(int dateToCalculate) const {  //Make a histogram of 
 	}
 
 	// open input file
-	ifstream file ("Cleaneddata");
+	ifstream file ("Cleaneddata_3.1");
 
 	// create a histogram 
  	TH1D* dayhist2 = new TH1D("dayhist2", "Average temperature of 1 day; Temperature [celsius]; counts", 60, -20, 40);
@@ -134,13 +134,13 @@ void tempTrender::tempOnDay(int dateToCalculate) const {  //Make a histogram of 
 	//Mean value and standart deviation
 	double mean = dayhist2->GetMean();	
 	double stdev = dayhist2->GetRMS();
-	cout << "The mean temperature is " << mean << " and the standart deviation is " << stdev << "." << endl;
+	cout << "The mean temperature is " << mean << " and the standard deviation is " << stdev << "." << endl;
 
 	//filling color for dayhist
 	dayhist2->SetFillColor(kRed +1);
 
   	// create canvas for dayhist
-  	TCanvas* c1 = new TCanvas("c1", "day canvas", 900, 600);
+  	TCanvas* c2 = new TCanvas("c2", "day canvas", 900, 600);
   	dayhist2->Draw();
 
 } 
