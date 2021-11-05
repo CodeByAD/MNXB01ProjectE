@@ -16,7 +16,7 @@ Make sure to take out both 12:00 and 13:00 in the same sed command:Line 7 sed -i
 Do not include picking out a specific year
 Do not inculde the third and fourth commands in the section: #Cleanes the dashes separating the dates
 Now run Cleaner.sh with the path to your data file and either provide the cleaneddata path in the code for result 3.1 or move the cleaneddata to the same directory as the skeleton.
-Run root in the folder where the skeleton exists with the temponday functions not commented out in project.cpp.
+Run root in the folder where the skeleton exists with the temponday functions not commented out in project.cpp but the others commented out to avoid calling multiple functions at once.
 Type project()
 
 To produce result 3.3:
@@ -25,7 +25,7 @@ Comment out command to take out specific times, Line 7.
 Include time removal while loop as the last command
 This means that everything below which includes picking out a single year and #Cleanes the dashes separating the dates should not be included.
 Move Cleneddata into skeleton directory or provide its path in the code for result 3.3, function named extremetemps.
-Run root in the folder where the skeleton exists with the extremetemps() function not commented out in project.cpp.
+Run root in the folder where the skeleton exists with the extremetemps() function not commented out in project.cpp but the others commented out to avoid calling multiple functions at once.
 Type project()
 
 To produce 3d graph result:
@@ -36,5 +36,5 @@ Include everything in section:
 #Cleanes the dashes separating the dates
 Run the cleaner with the provided path to the data file for Karlstad or another one you want to plot
 Then insert Cleaneddata into skeleton folder or provide its path in the code for 3d plotting(AvgTemp3D)
-Start root
+Start root in the folder where function Avgtemp3D is not comment out but the others commented out to avoid calling multiple functions at once.
 Type project()
