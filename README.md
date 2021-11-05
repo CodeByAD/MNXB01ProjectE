@@ -17,4 +17,7 @@ To produce result 3.3:
 Run root int the folder where the skeleton exists with the extremetemps() function not commented out in project.cpp.
 Type project()
 To produce 3d graph result:
-
+CHnage the line taking out times in the cleaner to only 12.00
+Then insert Cleaneddata into skeleton folder
+Start root
+Type project()

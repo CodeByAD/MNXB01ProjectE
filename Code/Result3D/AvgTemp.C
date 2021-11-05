@@ -13,7 +13,7 @@ using namespace std;
 // ROOT library
 
 
-void Avgtemp3D()
+TCanvas* Avgtemp3D()
 {
 
 
@@ -77,10 +77,12 @@ void Avgtemp3D()
 	}
 	//Plotting with the help of TGraph2D.
 	TCanvas *c = new TCanvas("c", "Graph2D");
-	TGraph2D *dt = new TGraph2D(1);
+	TGraph2D *dt = new TGraph2D();
 	dt->SetTitle("Avarage temperature each month over the years in Karlstad; Year; Month; Temperature(C)");
-	for (int f = 0; f<888; f++)
+	for(int f=0;f <888;f++){
+		cout << Avgyeararray[f]<< "\n";
 		dt->SetPoint(f, Avgyeararray[f], Avgmontharray[f], Avgtemparray[f]);
-	dt->Draw("surf1");
-	
+	}
+	dt->Draw("surf2");
+	return c;
 }

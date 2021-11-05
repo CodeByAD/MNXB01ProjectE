@@ -6,7 +6,7 @@ sed -i 's/G.*//' Cleaneddata #Removes all G
 
 #sed -i '0,/^1955 12 31$/d' Cleaneddata Removes everything 
 
-sed -i '/12:00\|13:00/!d' Cleaneddata #Special line where one can take out only specific wanted times.
+sed -i '/12:00/!d' Cleaneddata #Special line where one can take out only specific wanted times.
 
 sed -i 's/:/ /g' Cleaneddata #Swaps all colons for spaces
 sed -i 's/  */ /g' Cleaneddata #Reduces all multiple spaces to only one
