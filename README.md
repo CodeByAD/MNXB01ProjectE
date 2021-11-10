@@ -8,4 +8,7 @@ start root in the directory named "Skeleton"
 
 Type "Cleaner()" which will provide three cleaned datasets, one for each result
 
-Type project() to produce the result defined inside project, one must currently comment out the results that are not wanted since only one can be produced at a single time
+Type project() to produce the result of the called function in the project file. 
+Only one can be called at the same time right now.
+Working on this.
+IN the meantime, comment out all functions called except one inside project.cpp
