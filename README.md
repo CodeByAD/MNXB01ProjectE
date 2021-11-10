@@ -1,8 +1,9 @@
 # MNXB01ProjectE
 Directory structure:
-"Code" directory contains everything needed to runn the code and produce results
-"Documents" directory includes all other documents such as license and chnagelog
+"Code" directory contains everything needed to runn the code and produce results\
+"Documents" directory includes all other documents such as license and chnagelog\
 "Readme" includes instructions to run code and produce results and this description as you can see
+
 Rootlogon.C:
 Change the include path in the rootlogon.C file to your include directory in the skeleton file ex: -I/home/name/folder/to/Skeleton/include
 
