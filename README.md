@@ -1,6 +1,6 @@
 # MNXB01ProjectE
 Rootlogon.C:\
-Change the include path to your include directory in the skeleton file ex: -I/home/name/folder/to/include
+Change the include path in the rootlogon.C file to your include directory in the skeleton file ex: -I/home/name/folder/to/Skeleton/include
 
 load root if this is neaded
 
