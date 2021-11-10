@@ -17,3 +17,5 @@ Difference between north and south across year.(Diff between two datasets, one n
 
 11/04 - Added functionality to create lists of temperatures and days for single years and all years respectively in MinMaxTempAlex - Alex
         Added functionality to plot temperatures and days in single histograms and also using two plots in the same histograms in MinMaxTempAlex - Alex
+        
+11/10 - Removed old directories for individual results, fixed cleaner to be inserted into the skeleton with the rest of the code, Fixed callable functions for each result inside skeleton
