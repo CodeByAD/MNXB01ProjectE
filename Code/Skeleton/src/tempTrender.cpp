@@ -15,15 +15,12 @@ using namespace std;
 #include <TRandom.h>
 #include <TStyle.h>
 
-tempTrender::tempTrender(const std::string& filePath) {
-	std::cout << "The user supplied " << filePath <<" as the path to the data file.\n";
-	std::cout << "You should probably store this information in a member variable of the class! Good luck with the project! :)\n";
-}
+tempTrender::tempTrender() = default;
 
 void tempTrender::tempOnDay(int monthToCalculate, int dayToCalculate) const { //Make a histogram of the temperature on this day
 
 	// open input file
-	ifstream file ("Cleaneddata_3.1");
+	ifstream file ("Cleaneddata31");
 
 	// create a histogram 
  	TH1D* dayhist = new TH1D("dayhist", "Average temperature of 1 day; Temperature [celsius]; counts", 60, -20, 40);
@@ -95,7 +92,7 @@ void tempTrender::tempOnDay(int dateToCalculate) const {  //Make a histogram of 
 	}
 
 	// open input file
-	ifstream file ("Cleaneddata_3.1");
+	ifstream file ("Cleaneddata31");
 
 	// create a histogram 
  	TH1D* dayhist2 = new TH1D("dayhist2", "Average temperature of 1 day; Temperature [celsius]; counts", 60, -20, 40);
@@ -145,12 +142,6 @@ void tempTrender::tempOnDay(int dateToCalculate) const {  //Make a histogram of 
 
 } 
 
-// void tempTrender::tempPerDay() const {} //Make a histogram of the average temperature of each day of the year
-// void tempTrender::hotCold() const {} //Make a histogram of the hottest and coldest day of the year
-// void tempTrender::tempPerYear(int yearToExtrapolate) const {} //Make a histogram of average temperature per year, then fit and extrapolate to the given year
-
-
-
 double findtemp(Double_t daytemps[], Int_t samedaycount, string desire){
 	Double_t hottest = -300;
 	Double_t coldest = 1000000000000;	
@@ -193,7 +184,7 @@ Int_t yearindex; //To find the desired year in the 2D arrays to be produced.
 Int_t daynr; //To have to #days for the desired year stored.
 
 // open input file
-ifstream file("Cleaneddata");
+ifstream file("Cleaneddata33");
 
 //handles one line of the data-file at a time
 while(file >> date >> temp){
@@ -359,11 +350,11 @@ void tempTrender::Avgtemp3D()
 	
 	//Opening the Data file with fstream.
 	fstream file;
-	file.open("Cleaneddata", ios::in);
+	file.open("Cleaneddata3D", ios::in);
 
 	//Calculating the number of rows in the file
 	Int_t numLines = 0;
-	ifstream in("Cleaneddata");
+	ifstream in("Cleaneddata3D");
 	string unused;
 	while (getline(in, unused))
 	   ++numLines;
