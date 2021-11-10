@@ -8,7 +8,4 @@ start root in the directory named "Skeleton"
 
 Type "Cleaner()" which will provide three cleaned datasets, one for each result
 
-Type project() to produce the result of the called function in the project file. 
-Only one can be called at the same time right now.
-Working on this.
-IN the meantime, comment out all functions called except one inside project.cpp
+Type temponday(), extremetemps() or Avgtemp3D() to produce either result 3.1, 3.3 or a 3D graph of avergae temperature
